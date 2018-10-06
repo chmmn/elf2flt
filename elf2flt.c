@@ -81,7 +81,7 @@ const char *elf2flt_progname;
 #include <elf/v850.h>
 #elif defined(TARGET_xtensa)
 #include <elf/xtensa.h>
-#elif defined(TARGET_riscv64)
+#elif defined(TARGET_riscv64) || defined(TARGET_riscv) || defined(TARGET_riscv32)
 #include <elf/riscv.h>
 #endif
 
@@ -125,7 +125,7 @@ const char *elf2flt_progname;
 #define ARCH	"nios2"
 #elif defined(TARGET_xtensa)
 #define ARCH	"xtensa"
-#elif defined(TARGET_riscv64) || defined(TARGET_riscv)
+#elif defined(TARGET_riscv64) || defined(TARGET_riscv) || defined(TARGET_riscv32)
 #define ARCH    "riscv"
 #else
 #error "Don't know how to support your CPU architecture??"
@@ -473,7 +473,7 @@ output_relocs (
 			unsigned char *r_mem = NULL;
 			int relocation_needed = 0;
 
-#ifdef TARGET_riscv64
+#if defined(TARGET_riscv64) || defined(TARGET_riscv) || defined(TARGET_riscv32)
 			switch ((*p)->howto->type) {
 			case R_RISCV_ADD32:
 			case R_RISCV_SUB32:
