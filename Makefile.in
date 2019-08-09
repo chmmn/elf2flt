@@ -127,7 +127,7 @@ bfd-headers/.stamp:
 	rm -rf bfd-headers
 	mkdir bfd-headers
 	ln -sf $(BFD_INCLUDE_DIR)/bfd.h bfd-headers/bfd.h
-	for f in ansidecl filenames hashtab libiberty symcat; do \
+	for f in ansidecl filenames hashtab libiberty symcat diagnostics; do \
 		ln -sf $(BINUTILS_INCLUDE_DIR)/$$f.h bfd-headers/$$f.h || exit 1; \
 	done
 	ln -sf $(BINUTILS_INCLUDE_DIR)/elf bfd-headers/elf
